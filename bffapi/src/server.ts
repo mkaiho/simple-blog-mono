@@ -1,6 +1,7 @@
 import debugModule from 'debug'
 import * as http from 'http'
 import app from './app'
+import logger from './modules/logging/logger'
 
 const debug = debugModule('bffapi:server')
 
@@ -36,13 +37,13 @@ server.on('error', (error: NodeJS.ErrnoException) => {
   // handle specific listen errors with friendly messages
   switch (error.code) {
     case 'EACCES':
-      console.error(`${bind} requires elevated privileges`)
+      logger.error(`${bind} requires elevated privileges`)
       process.exit(1)
-      break
+    // eslint-disable-next-line no-fallthrough
     case 'EADDRINUSE':
-      console.error(`${bind} is already in use`)
+      logger.error(`${bind} is already in use`)
       process.exit(1)
-      break
+    // eslint-disable-next-line no-fallthrough
     default:
       throw error
   }

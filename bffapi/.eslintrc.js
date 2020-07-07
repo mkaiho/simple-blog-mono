@@ -27,6 +27,10 @@ module.exports = {
         tsx: 'never',
       },
     ],
+    '@typescript-eslint/no-unused-vars': ['error', { argsIgnorePattern: '^_' }],
+    'no-underscore-dangle': ['error', { allowAfterThis: true }],
+    'no-useless-constructor': 'off',
+    '@typescript-eslint/no-useless-constructor': 'error',
   },
   settings: {
     'import/resolver': {

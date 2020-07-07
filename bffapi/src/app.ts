@@ -1,13 +1,13 @@
 import express from 'express'
 import path from 'path'
 import cookieParser from 'cookie-parser'
-import logger from 'morgan'
+import logger from './modules/logging/logger'
 
 import usersRouter from './routes/users'
 
 const app = express()
 
-app.use(logger('dev'))
+app.use(logger.middleware())
 app.use(express.json())
 app.use(express.urlencoded({ extended: false }))
 app.use(cookieParser())
