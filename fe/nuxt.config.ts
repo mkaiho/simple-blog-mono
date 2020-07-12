@@ -93,7 +93,7 @@ const config: Configuration = {
    */
   build: {},
   env: {
-    baseURL: process.env.BASE_URL || 'http://localhost:4000',
+    baseURL: process.env.BFF_API_BASE_URL || 'http://localhost:4000',
   },
 }
 
