@@ -1,0 +1,11 @@
+@import '~bulma/sass/utilities/_all';
+@import '~bulma';
+@import '~buefy/src/scss/buefy';
+
+// @import 'variables';
+// @import 'functions';
+// @import 'mixins';
+
+.base-button {
+  @extend .button;
+}
