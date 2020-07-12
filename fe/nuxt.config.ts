@@ -1,4 +1,8 @@
-export default {
+import { Configuration } from '@nuxt/types'
+
+require('dotenv').config()
+
+const config: Configuration = {
   /*
    ** Nuxt rendering mode
    ** See https://nuxtjs.org/api/configuration-mode
@@ -29,7 +33,7 @@ export default {
   /*
    ** Global CSS
    */
-  css: [{ src: '~/assets/styles/main.scss', lang: 'scss' }],
+  css: ['~/assets/styles/main.scss'],
   styleResources: {
     scss: ['~/assets/styles/common.scss'],
   },
@@ -59,6 +63,7 @@ export default {
     'nuxt-buefy',
     // Doc: https://axios.nuxtjs.org/usage
     '@nuxtjs/axios',
+    '@nuxtjs/proxy',
     '@nuxtjs/pwa',
     '@nuxtjs/style-resources',
     // Doc: https://github.com/nuxt/content
@@ -68,7 +73,15 @@ export default {
    ** Axios module configuration
    ** See https://axios.nuxtjs.org/options
    */
-  axios: {},
+  axios: {
+    proxy: true,
+  },
+  proxy: {
+    '/bff-api/': {
+      target: process.env.BFF_API_BASE_URL,
+      pathRewrite: { '^/bff-api': '/' },
+    },
+  },
   /*
    ** Content module configuration
    ** See https://content.nuxtjs.org/configuration
@@ -79,4 +92,9 @@ export default {
    ** See https://nuxtjs.org/api/configuration-build/
    */
   build: {},
+  env: {
+    baseURL: process.env.BASE_URL || 'http://localhost:4000',
+  },
 }
+
+export default config
