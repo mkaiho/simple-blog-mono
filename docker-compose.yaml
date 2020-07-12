@@ -1,0 +1,29 @@
+version: '3.7'
+
+services:
+  bffapi:
+    build:
+      context: ./bffapi
+      dockerfile: ./Dockerfile
+    container_name: simple-blog-mono-bffapi
+    ports:
+      - 3000:3000
+    volumes:
+      - fe_node_modules_volume:/workspaces/fe/node_modules
+  fe:
+    build:
+      context: ./fe
+      dockerfile: ./Dockerfile
+    container_name: simple-blog-mono-fe
+    ports:
+      - 8080:3000
+    depends_on:
+      - bffapi
+    environment:
+      - BFF_API_BASE_URL=http://bffapi:3000
+    volumes:
+      - fe_node_modules_volume:/workspaces/fe/node_modules
+
+volumes:
+  fe_node_modules_volume:
+  bffapi_node_modules_volume:
