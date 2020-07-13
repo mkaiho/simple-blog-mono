@@ -3,6 +3,7 @@ import { Configuration } from '@nuxt/types'
 require('dotenv').config()
 
 const config: Configuration = {
+  srcDir: 'src/',
   /*
    ** Nuxt rendering mode
    ** See https://nuxtjs.org/api/configuration-mode

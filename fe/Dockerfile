@@ -2,7 +2,8 @@ FROM node:12-buster as build-stage
 
 WORKDIR /work/fe
 
-COPY . .
+COPY ["package.json", "yarn.lock", "tsconfig.json", ".babelrc", "nuxt.config.ts", "/work/fe/"]
+COPY "./src" "/work/fe/src"
 
 RUN yarn install
 RUN yarn build
