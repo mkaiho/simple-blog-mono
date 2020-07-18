@@ -1,8 +1,8 @@
 /* eslint-disable dot-notation */
-import User from '../../../../../src/domain/models/user/user'
-import UserId from '../../../../../src/domain/models/user/user-id'
+import User from '../../../../src/domain/models/user/user'
+import UserId from '../../../../src/domain/models/user/user-id'
 
-jest.mock('../../../../../src/domain/models/user/user-id')
+jest.mock('../../../../src/domain/models/user/user-id')
 const mockedUserId = UserId as jest.Mock<UserId>
 
 beforeEach(() => {

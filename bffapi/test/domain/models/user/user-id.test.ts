@@ -1,6 +1,6 @@
 /* eslint-disable dot-notation */
-import UserId from '../../../../../src/domain/models/user/user-id'
-import uuidModule from '../../../../../src/modules/uuid/uuid'
+import UserId from '../../../../src/domain/models/user/user-id'
+import uuidModule from '../../../../src/modules/uuid/uuid'
 
 describe('constructor', () => {
   it('create UserId when passed `value` is valid uuid string', () => {
